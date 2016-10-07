@@ -161,6 +161,13 @@ public class Steering : MonoBehaviour {
 			else {
 				Vector3 direction = -1 * tracker.transform.right;
 				direction.y = 0.0f;
+				float speedChange = 1.0f;
+				//If press speedUp button, speed X 2
+				if(buttonSpeedUp.GetPress()){
+					speedChange = 3.0f;
+				}
+				// Translate the space based on the tracker's absolute forward direction and the joystick's backward value
+				space.transform.position += joystick.GetAxis().x * direction * speed * speedChange * Time.deltaTime;
 			}
 		
 		}
