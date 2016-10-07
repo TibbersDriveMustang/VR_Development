@@ -154,7 +154,8 @@ public class Steering : MonoBehaviour {
 			if (!button.GetPress ()) {
 				//Change state to not steering
 				state = SteeringState.NotSteering;
-			} else if (joystick.GetAxis ().x < 0.0f && button.GetPress ()) {
+			} 
+			else if (joystick.GetAxis ().x < 0.0f && button.GetPress ()) {
 				//Change state to steering right
 				state = SteeringState.SteeringRight;
 			} 
@@ -170,6 +171,30 @@ public class Steering : MonoBehaviour {
 				space.transform.position += joystick.GetAxis().x * direction * speed * speedChange * Time.deltaTime;
 			}
 		
+		}
+		else if (state == SteeringState.SteeringRight) {
+
+			//If the button is not pressed
+			if (!button.GetPress ()) {
+				//Change state to not steering
+				state = SteeringState.NotSteering;
+			} 
+			else if (joystick.GetAxis ().x > 0.0f && button.GetPress ()) {
+				//Change state to steering right
+				state = SteeringState.SteeringLeft;
+			} 
+			else {
+				Vector3 direction = -1 * tracker.transform.right;
+				direction.y = 0.0f;
+				float speedChange = 1.0f;
+				//If press speedUp button, speed X 2
+				if(buttonSpeedUp.GetPress()){
+					speedChange = 3.0f;
+				}
+				// Translate the space based on the tracker's absolute forward direction and the joystick's backward value
+				space.transform.position += joystick.GetAxis().x * direction * speed * speedChange * Time.deltaTime;
+			}
+
 		}
 	}
 }
