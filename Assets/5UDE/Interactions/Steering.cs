@@ -188,8 +188,7 @@ public class Steering : MonoBehaviour {
 			if (!button.GetPress ()) {
 				//Change state to not steering
 				state = SteeringState.NotSteering;
-			} 
-			else if (joystick.GetAxis ().x < 0.0f && button.GetPress ()) {
+			} else if (joystick.GetAxis ().x < 0.0f && button.GetPress ()) {
 				//Change state to steering right
 				state = SteeringState.SteeringRight;
 			} 
@@ -214,6 +213,7 @@ public class Steering : MonoBehaviour {
 			}
 		
 		}
+<<<<<<< HEAD
 		else if (state == SteeringState.SteeringRight) {
 
 			//If the button is not pressed
@@ -246,5 +246,7 @@ public class Steering : MonoBehaviour {
 			}
 
 		}
+=======
+>>>>>>> parent of 51b9bef... SteeringRight complete
 	}
 }
