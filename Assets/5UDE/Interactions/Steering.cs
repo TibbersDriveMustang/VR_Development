@@ -11,12 +11,15 @@ public class Steering : MonoBehaviour {
 		SteeringLeft,
 		SteeringRight,
 		SpeedUp,
-		Stuck
+		SteeringStuck
 	};
 	
     // Inspector parameters
     [Tooltip("The tracking device used to determine absolute direction for steering.")]
     public Tracker tracker;
+
+	[Tooltip("The representation of player in virtual environment")]
+	public Affect body;
 
     [Tooltip("The controller joystick used to determine relative direction (forward/backward) and speed.")]
 	public Axis joystick;
@@ -86,6 +89,19 @@ public class Steering : MonoBehaviour {
 			}
 		}
 
+		//If state is steering stuck
+		else if(state == SteeringState.SteeringStuck){
+			//do something, e.g vibration
+			// If the button is not pressed
+			Debug.Log("Enter SteeringStuck :" + Time.deltaTime);
+			if (!button.GetPress ()) {
+				Debug.Log("Exit SteeringStuck :" + Time.deltaTime);
+				// Change state to not steering 
+				state = SteeringState.NotSteering;
+
+			}
+		}
+
 		// If state is steering forward
 		else if (state == SteeringState.SteeringForward) {
 
@@ -114,7 +130,17 @@ public class Steering : MonoBehaviour {
 					speedChange = 3.0f;	
 				}
 				// Translate the space based on the tracker's absolute forward direction and the joystick's forward value
+
+				Vector3 temp = joystick.GetAxis ().y * direction * speed * speedChange * Time.deltaTime;
 				space.transform.position += joystick.GetAxis ().y * direction * speed * speedChange * Time.deltaTime;
+
+				//Check if player`s virtual body is colliding something
+				if(body.triggerOngoing){
+					Debug.Log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!Enter SteeringStuck Point 138:" + Time.deltaTime);
+					space.transform.position -= temp;
+					state = SteeringState.SteeringStuck;
+				}
+
 			}
 		}
 
@@ -145,7 +171,15 @@ public class Steering : MonoBehaviour {
 					speedChange = 3.0f;	
 				}
 				// Translate the space based on the tracker's absolute forward direction and the joystick's backward value
-				space.transform.position += joystick.GetAxis ().y * direction * speed * speedChange * Time.deltaTime;
+				Vector3 temp = joystick.GetAxis ().y * direction * speed * speedChange * Time.deltaTime;
+				space.transform.position += temp;
+
+				//Check if player`s virtual body is colliding something
+				if(body.triggerOngoing){
+					space.transform.position -= temp;
+					Debug.Log("!!!!!!!!!!!!!!Enter SteeringStuck Point :" + Time.deltaTime);
+					state = SteeringState.SteeringStuck;
+				}
 			}
 		} 
 		else if (state == SteeringState.SteeringLeft) {
@@ -168,7 +202,15 @@ public class Steering : MonoBehaviour {
 					speedChange = 3.0f;
 				}
 				// Translate the space based on the tracker's absolute forward direction and the joystick's backward value
-				space.transform.position += joystick.GetAxis().x * direction * speed * speedChange * Time.deltaTime;
+				Vector3 temp = joystick.GetAxis().x * direction * speed * speedChange * Time.deltaTime;
+				space.transform.position += temp;
+
+				//Check if player`s virtual body is colliding something
+				if(body.triggerOngoing){
+					space.transform.position -= temp;
+					Debug.Log("!!!!!!!!!!!!!!Enter SteeringStuck Point :" + Time.deltaTime);
+					state = SteeringState.SteeringStuck;
+				}
 			}
 		
 		}
@@ -192,7 +234,15 @@ public class Steering : MonoBehaviour {
 					speedChange = 3.0f;
 				}
 				// Translate the space based on the tracker's absolute forward direction and the joystick's backward value
-				space.transform.position += joystick.GetAxis().x * direction * speed * speedChange * Time.deltaTime;
+				Vector3 temp = joystick.GetAxis().x * direction * speed * speedChange * Time.deltaTime;
+				space.transform.position += temp;
+
+				//Check if player`s virtual body is colliding something
+				if(body.triggerOngoing){
+					space.transform.position -= temp;
+					Debug.Log("!!!!!!!!!!!!!!Enter SteeringStuck Point :" + Time.deltaTime);
+					state = SteeringState.SteeringStuck;
+				}
 			}
 
 		}

@@ -34,7 +34,6 @@ public class Interactive : Element {
 		
 	// Updates the behaviors of the element's rigidbody and colliders
 	protected override void UpdateBehaviors () {
-
 		// Ensure physics control the rigidbody
 		rigidbody.isKinematic = false;
 		// Check for a change in gravity and set it

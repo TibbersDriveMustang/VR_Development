@@ -1,9 +1,14 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/5UDE/Interactions/VirtualHand.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/5UDE/Interactions/Steering.cs">
     <Files>
-      <File FileName="Assets/5UDE/Interactions/Steering.cs" Line="14" Column="8" />
-      <File FileName="Assets/5UDE/Interactions/VirtualHand.cs" Line="10" Column="10" />
+      <File FileName="Assets/5UDE/Interactions/Steering.cs" Line="22" Column="19" />
+      <File FileName="Assets/5UDE/Interactions/VirtualHand.cs" Line="48" Column="24" />
+      <File FileName="Assets/5UDE/Systems/Common/Scripts/Vibration.cs" Line="20" Column="36" />
+      <File FileName="Assets/5UDE/Features/Interactive.cs" Line="80" Column="17" />
+      <File FileName="Assets/5UDE/Features/Element.cs" Line="77" Column="17" />
+      <File FileName="Assets/5UDE/Features/Affect.cs" Line="11" Column="1" />
+      <File FileName="Assets/Plugins/SteamVR/Plugins/openvr_api.cs" Line="4064" Column="54" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

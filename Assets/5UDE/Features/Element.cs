@@ -9,7 +9,8 @@ public enum ElementShape {
 	Mesh,
 	Wheel,
 	Terrain,
-	ExistingColliders
+	ExistingColliders,
+	PlayerBody
 };
 
 [RequireComponent(typeof(Rigidbody))]
