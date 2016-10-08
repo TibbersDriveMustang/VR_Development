@@ -214,6 +214,7 @@ public class Steering : MonoBehaviour {
 		
 		}
 <<<<<<< HEAD
+<<<<<<< HEAD
 		else if (state == SteeringState.SteeringRight) {
 
 			//If the button is not pressed
@@ -246,6 +247,8 @@ public class Steering : MonoBehaviour {
 			}
 
 		}
+=======
+>>>>>>> parent of 51b9bef... SteeringRight complete
 =======
 >>>>>>> parent of 51b9bef... SteeringRight complete
 	}
